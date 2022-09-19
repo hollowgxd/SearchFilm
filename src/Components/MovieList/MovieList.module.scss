@@ -1,0 +1,25 @@
+.MovieList {
+  display: flex;
+  flex-direction: column;
+  width: 72%;
+  height: 630px;
+  padding: 25px;
+  overflow: auto;
+  div {
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .arrows {
+    vertical-align: center;
+    display: flex;
+    cursor: pointer;
+    margin-top: 30px;
+    h1 {
+      color: #ad4545;
+    }
+  }
+}
