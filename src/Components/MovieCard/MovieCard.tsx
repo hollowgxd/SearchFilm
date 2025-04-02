@@ -12,27 +12,34 @@ export type MovieCardType={
     popularity?: Number
     poster_path?: String,
     release_date?: String,
-    title?: String,
+    title?: string,
     video?: Boolean
     vote_average?: Number
     vote_count?: Number
 
 }
-function MovieCard({movie, infoClick}: { movie: MovieCardType, infoClick: Function }) {
-
-
-
-
-    function onInfoClick(){
-    return infoClick(movie)
+function MovieCard({ movie, infoClick }: { movie: MovieCardType; infoClick: Function }) {
+    if (!movie.poster_path) {
+        return null; 
     }
+
+    function onInfoClick() {
+        return infoClick(movie);
+    }
+
     return (
         <div className={styles.movieCard}>
-
-          <Link to='/info'><img onClick={onInfoClick} alt='vlad lox' style={{borderRadius:'20px 20px 20px 20px'}} width={130} height={180} src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}/>
-          </Link>
+            <Link to='/info'>
+                <img
+                    onClick={onInfoClick}
+                    alt={movie.title || "No title"}
+                    style={{ borderRadius: '20px' }}
+                    width={130}
+                    height={180}
+                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                />
+            </Link>
             <p>{movie.title}</p>
-
         </div>
     );
 }
